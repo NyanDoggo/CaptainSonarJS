@@ -26,7 +26,6 @@ testSub = new submarine(0,0);
 
 function isValidMove(currentI, currentJ){
     return !(gameMap[currentI][currentJ] === 1 || currentJ >= gameMap[0].length || currentI >= gameMap.length || currentI < 0 || currentJ < 0);
-
 }
 
 
@@ -80,6 +79,22 @@ function driveShip(direction){
     }
 }
 
+let testTeam = new team();
+
+function drawMap(map){
+    for (let i = 0; i < map.length; i++){
+        for (let j = 0; j < map[i].length; j++){
+            if (map[i][j] === 0){
+                ctx.fillStyle = "#8fbae4";
+            } else if (map[i][j] === 1){
+                ctx.fillStyle = "#5aa457";
+            } else if (map[i][j] === 5){
+                ctx.fillStyle = "#000000";
+            }
+            ctx.fillRect( j*tileW, i*tileH, tileW, tileH);
+        }
+    }
+}
 
 function drawGame()
 {
@@ -94,26 +109,23 @@ function drawGame()
     }
     else { frameCount++; }
 
-    
-
-    for(let i = 0; i < gameMap.length; i++)
-    {
-        for(let j = 0; j < gameMap[i].length; j++)
-        {
-            if (i === testSub.indexI && j === testSub.indexJ){
-                ctx.fillStyle = "#000000";
-            }else if (gameMap[i][j] === 0) {
-                ctx.fillStyle = "#8fbae4";
-            } else if (gameMap[i][j] === 1) {
-                ctx.fillStyle = "#5aa457";
-            } else{
-                ctx.fillStyle ="#7fffff";
-            }
-
-            ctx.fillRect( j*tileW, i*tileH, tileW, tileH);
-        }
-    }
 
 
+    // for(let i = 0; i < gameMap.length; i++)
+    // {
+    //     for(let j = 0; j < gameMap[i].length; j++)
+    //     {
+    //         if (i === testSub.indexI && j === testSub.indexJ){
+    //             ctx.fillStyle = "#000000";
+    //         }else if (gameMap[i][j] === 0) {
+    //             ctx.fillStyle = "#8fbae4";
+    //         } else if (gameMap[i][j] === 1) {
+    //             ctx.fillStyle = "#5aa457";
+    //         }
+    //         ctx.fillRect( j*tileW, i*tileH, tileW, tileH);
+    //     }
+    // }
+
+    drawMap(testTeam.mapView);
     requestAnimationFrame(drawGame);
 }
