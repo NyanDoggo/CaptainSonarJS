@@ -1,25 +1,28 @@
-class captain extends role{
-    currentCommand;
+class captain{
     availableActions = ["moveRight", "moveLeft", "moveUp", "moveDown"];
-    constructor() {
-        super();
-        this.currentCommand = [];
+    constructor(mediator) {
+        this.mediator = mediator
+    }
+
+    chooseStartingLocation(indexI, indexJ){
+        this.submarine.indexI = indexI;
+        this.submarine.indexJ = indexJ;
     }
 
     moveShipRight(){
-        console.log("moveRight");
+        this.mediator.receiveNotification("captain", "moveRight");
     }
 
     moveShipLeft(){
-        console.log("moveLeft");
+        this.mediator.receiveNotification("captain", "moveLeft");
     }
 
     moveShipUp(){
-        console.log("moveUp");
+        this.mediator.receiveNotification("captain", "moveUp");
     }
 
     moveShipDown(){
-        console.log("moveDown");
+        this.mediator.receiveNotification("captain", "moveDown");
     }
 
 

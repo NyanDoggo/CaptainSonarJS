@@ -1,10 +1,43 @@
 class submarine{
+
     constructor(indexI, indexJ) {
         this.indexI = indexI;
         this.indexJ = indexJ;
         this.isDive = true;
         this.route = [];
+        this.mineGauge = 0;
+        this.torpedoGauge = 0;
+        this.sonarGauge = 0;
+        this.droneGauge = 0;
+        this.silenceGauge = 0;
         this.hullHP = 4;
+        this.firstMateOKSignal = true;
+        this.engineerOKSignal = true;
+    }
+
+    increaseMineGauge(){
+        this.mineGauge++;
+        this.firstMateOKSignal = true;
+    }
+
+    increaseTorpedoGauge(){
+        this.torpedoGauge++;
+        this.firstMateOKSignal = true;
+    }
+
+    increaseSonarGauge(){
+        this.sonarGauge++;
+        this.firstMateOKSignal = true;
+    }
+
+    increaseDroneGauge(){
+        this.droneGauge++;
+        this.firstMateOKSignal = true;
+    }
+
+    increaseSilenceGauge(){
+        this.silenceGauge++
+        this.firstMateOKSignal = true;
     }
 
     dive(){
@@ -17,7 +50,6 @@ class submarine{
 
     driveShipRight(){
         driveShip("right");
-
     }
 
     driveShipDown(){

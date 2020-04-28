@@ -11,6 +11,7 @@
     <script src="Player/Role/engineer.js"></script>
     <script src="Player/player.js"></script>
     <script src="Player/team.js"></script>
+    <script src="Player/ActionMediator.js"></script>
 
 
     <script src="Game/game.js"></script>
@@ -23,9 +24,9 @@
 <canvas id="game" width="400" height ="400"></canvas>
 <div id="captainView" class="">
     <button id="right" onclick="testCaptain.moveShipRight()"> Right</button>
-    <button id="left" onclick="driveShipLeft()"> Left</button>
-    <button id="up" onclick="driveShipUp()"> Up</button>
-    <button id="down" onclick="driveShipDown()"> Down</button>
+    <button id="left" onclick="testCaptain.moveShipLeft()"> Left</button>
+    <button id="up" onclick="testCaptain.moveShipUp()"> Up</button>
+    <button id="down" onclick="testCaptain.moveShipDown()"> Down</button>
 </div>
 
 <div id="engineerView" class="">
