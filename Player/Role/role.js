@@ -1,3 +1,5 @@
 class role{
-    doAction();
+    constructor() {
+    }
+
 }

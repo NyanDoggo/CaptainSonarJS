@@ -35,26 +35,26 @@ class submarine{
     driveShip(direction){
         if (direction === "right"){
             let tmp = this.indexJ + 1;
-            if (isValidMove(this.indexI, tmp)){
+            if (this.isValidMove(this.indexI, tmp)){
                 this.indexJ++;
                 addRouteToSub()
                 console.log(this.route);
             }
         } else if (direction === "left"){
             let tmp = this.indexJ - 1;
-            if (isValidMove(this.indexI, tmp)){
+            if (this.isValidMove(this.indexI, tmp)){
                 this.indexJ--;
                 addRouteToSub()
             }
         } else if (direction === "up"){
             let tmp = this.indexI - 1;
-            if (isValidMove(tmp, this.indexJ)){
+            if (this.isValidMove(tmp, this.indexJ)){
                 this.indexI--;
                 addRouteToSub()
             }
         } else if (direction === "down"){
             let tmp = this.indexI + 1;
-            if (isValidMove(tmp, this.indexJ)){
+            if (this.isValidMove(tmp, this.indexJ)){
                 this.indexI++;
                 addRouteToSub()
             }

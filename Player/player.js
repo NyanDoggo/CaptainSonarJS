@@ -1,11 +1,14 @@
 class player{
     currentCommand;
-    constructor(role) {
-        this.role = role;
-    }
-
-    doCommand(command){
+    constructor() {
 
     }
 
+    setRole(roleName){
+        if (roleName === "Captain"){
+            this.role = new captain();
+        } else if (roleName === "FirstMate"){
+            this.role = new firstMate();
+        }
+    }
 }

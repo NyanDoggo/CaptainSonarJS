@@ -23,6 +23,8 @@ window.onload = function()
 };
 
 testSub = new submarine(0,0);
+testCaptain = new captain();
+testEngineer = new engineer();
 
 function isValidMove(currentI, currentJ){
     return !(gameMap[currentI][currentJ] === 1 || currentJ >= gameMap[0].length || currentI >= gameMap.length || currentI < 0 || currentJ < 0);

@@ -2,9 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <script src="GameObjects/Map.js"></script>
     <script src="GameObjects/submarine.js"></script>
+    <script src="Player/Role/role.js"></script>
     <script src="Player/Role/captain.js"></script>
+    <script src="Player/Role/firstMate.js"></script>
+    <script src="Player/Role/engineer.js"></script>
     <script src="Player/player.js"></script>
     <script src="Player/team.js"></script>
 
@@ -16,12 +20,54 @@
 
 
 <body>
-    <canvas id="game" width="400" height ="400"></canvas>
-    <button id="right" onclick="driveShipRight()"> Right</button>
+<canvas id="game" width="400" height ="400"></canvas>
+<div id="captainView" class="">
+    <button id="right" onclick="testCaptain.moveShipRight()"> Right</button>
     <button id="left" onclick="driveShipLeft()"> Left</button>
     <button id="up" onclick="driveShipUp()"> Up</button>
     <button id="down" onclick="driveShipDown()"> Down</button>
+</div>
+
+<div id="engineerView" class="">
+    <button onclick="testEngineer.doRepair()">Repair</button>
+</div>
+
+
+
+<button onclick="selectView('captainView')">Captain View</button>
+<button onclick="selectView('engineerView')">Engineer View</button>
+
 
 </body>
+<script>
+    let hide = false;
+    let remover = document.getElementById('captainView');
+    remover.classList.add("hide");
+    remover = document.getElementById('engineerView');
+    remover.classList.add("hide");
+
+
+    function selectView(viewID){
+        let element = document.getElementById(viewID);
+        if (viewID === "captainView"){
+            element.classList.remove("hide");
+            element = document.getElementById("engineerView");
+            element.classList.add("hide");
+        }
+        if (viewID === "engineerView"){
+            element.classList.remove("hide");
+            element = document.getElementById("captainView");
+            element.classList.add("hide");
+        }
+
+        // if (hide === true) {
+        //     element.classList.remove("hide");
+        //     hide = false;
+        // } else {
+        //     element.classList.add("hide");
+        //     hide = true;
+        // }
+    }
+</script>
 
 </html>
