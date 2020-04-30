@@ -81,7 +81,7 @@ function driveShip(direction){
     }
 }
 
-let testTeam = new team();
+let testTeam = new team(new captain());
 
 function drawMap(map){
     for (let i = 0; i < map.length; i++){
@@ -127,7 +127,7 @@ function drawGame()
     //         ctx.fillRect( j*tileW, i*tileH, tileW, tileH);
     //     }
     // }
-
+    testTeam.updateSubmarineLocation();
     drawMap(testTeam.mapView);
     requestAnimationFrame(drawGame);
 }

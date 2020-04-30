@@ -1,13 +1,15 @@
 class captain{
-    availableActions = ["moveRight", "moveLeft", "moveUp", "moveDown"];
     constructor(mediator) {
         this.mediator = mediator
     }
 
-    chooseStartingLocation(indexI, indexJ){
-        this.submarine.indexI = indexI;
-        this.submarine.indexJ = indexJ;
+    setMediator(mediator){
+        this.mediator = mediator;
     }
+    // chooseStartingLocation(indexI, indexJ){
+    //     this.submarine.indexI = indexI;
+    //     this.submarine.indexJ = indexJ;
+    // }
 
     moveShipRight(){
         this.mediator.receiveNotification("captain", "moveRight");

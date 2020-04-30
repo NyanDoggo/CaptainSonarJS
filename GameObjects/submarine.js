@@ -13,6 +13,8 @@ class submarine{
         this.hullHP = 4;
         this.firstMateOKSignal = true;
         this.engineerOKSignal = true;
+        this.captainOKSignal = false;
+        this.submarineSystem = new SubmarineSystem();
     }
 
     increaseMineGauge(){
@@ -45,19 +47,19 @@ class submarine{
     }
 
     driveShipLeft(){
-        driveShip("left");
+        this.driveShip("left");
     }
 
     driveShipRight(){
-        driveShip("right");
+        this.driveShip("right");
     }
 
     driveShipDown(){
-        driveShip("down");
+        this.driveShip("down");
     }
 
     driveShipUp() {
-        driveShip("up")
+        this.driveShip("up")
     }
 
     isValidMove(currentI, currentJ){
@@ -69,31 +71,26 @@ class submarine{
             let tmp = this.indexJ + 1;
             if (this.isValidMove(this.indexI, tmp)){
                 this.indexJ++;
-                addRouteToSub()
-                console.log(this.route);
+                // console.log(this.route);
             }
         } else if (direction === "left"){
             let tmp = this.indexJ - 1;
             if (this.isValidMove(this.indexI, tmp)){
                 this.indexJ--;
-                addRouteToSub()
             }
         } else if (direction === "up"){
             let tmp = this.indexI - 1;
             if (this.isValidMove(tmp, this.indexJ)){
                 this.indexI--;
-                addRouteToSub()
             }
         } else if (direction === "down"){
             let tmp = this.indexI + 1;
             if (this.isValidMove(tmp, this.indexJ)){
                 this.indexI++;
-                addRouteToSub()
             }
         }
+        this.captainOKSignal = true;
     }
-
-
 
     addToRoute(indexI, indexJ){
         let tmp = {indexI,indexJ};

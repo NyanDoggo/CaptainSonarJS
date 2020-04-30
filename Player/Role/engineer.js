@@ -1,8 +1,7 @@
 class engineer{
-    constructor() {
+    constructor(mediator) {
+        this.mediator = mediator;
     }
 
-    doRepair(){
-        console.log("repairing");
-    }
+
 }

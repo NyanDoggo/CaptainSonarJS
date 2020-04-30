@@ -1,22 +1,43 @@
 class ActionMediator{
 
-    constructor() {
-        this.submarine = new submarine();
+    constructor(submarine) {
+        this.submarine = submarine;
     }
 
 
-    checkMovement(){
+    checkMovementForCaptain(){
         if (this.submarine.firstMateOKSignal && this.submarine.engineerOKSignal){
             return true
         }
     }
 
-    resolveFirstMateAction(action){
+    checkMovementForFirstMate(){
+        if (this.submarine.captainOKSignal === true && this.submarine.firstMateOKSignal === false){
+            return true;
+        }
+    }
+
+    resolveEngineerAction(action){
 
     }
 
+    resolveFirstMateAction(action){
+        let moveAllowed = this.checkMovementForFirstMate();
+        if (action === "markMine" && moveAllowed && this.submarine.mineGauge < 3){
+            this.submarine.increaseMineGauge();
+        } else if (action === "markTorpedo" && moveAllowed && this.submarine.torpedoGauge < 3){
+            this.submarine.increaseTorpedoGauge();
+        } else if (action === "markDrone" && moveAllowed && this.submarine.droneGauge < 4){
+            this.submarine.increaseDroneGauge();
+        } else if (action === "markSonar" && moveAllowed && this.submarine.sonarGauge < 3){
+            this.submarine.increaseSonarGauge();
+        } else if (action === "markSilence" && moveAllowed && this.submarine.silenceGauge < 6){
+            this.submarine.increaseSilenceGauge();
+        }
+    }
+
     resolveCaptainAction(action){
-        let moveAllowed = this.checkMovement();
+        let moveAllowed = this.checkMovementForCaptain();
         if (action === "moveLeft" && moveAllowed === true){
             //resolve
             this.submarine.driveShipLeft();
@@ -52,8 +73,10 @@ class ActionMediator{
     receiveNotification(role, action){
         if (role === "captain"){
             this.resolveCaptainAction(action);
-        } else {
-            return false;
+        } else if (role === "firstMate") {
+            this.resolveFirstMateAction(action);
+        } else if (role === "engineer"){
+            this.resolveEngineerAction(action);
         }
     }
 }
