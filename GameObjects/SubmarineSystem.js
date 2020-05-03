@@ -2,6 +2,9 @@ class SubmarineSystem{
     constructor() {
         this.circuit = [];
         this.initSubmarineSystem();
+        this.isWeaponSystemAvailable = true;
+        this.isDetectionSystemAvailable = true;
+        this.isSpecialSystemAvailable = true;
     }
 
     initWestCircuit(){
